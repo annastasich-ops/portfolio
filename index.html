@@ -1,0 +1,1000 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Портфолио Анастасии Кузнецовой — маркетинговые спецпроекты, креативное продюсирование и бренд-коммуникации.">
+  <title>Анастасия Кузнецова — маркетинговые спецпроекты</title>
+  <style>
+    :root {
+      --ink: #2b2d31;
+      --muted: #64666c;
+      --paper: #f7f6f3;
+      --white: #fff;
+      --line: #d9d8d3;
+      --pink: #f4cad8;
+      --green: #d8ebcf;
+      --blue: #cfe5f4;
+      --radius: 24px;
+      --shadow: 0 18px 60px rgba(43, 45, 49, .08);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+    button, input, textarea, select { font: inherit; }
+    a { color: inherit; }
+    .shell { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+    .eyebrow {
+      margin: 0 0 14px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 920px;
+      margin-bottom: 28px;
+      font-size: clamp(48px, 8.2vw, 108px);
+      font-weight: 760;
+      line-height: .93;
+      letter-spacing: -.065em;
+    }
+    h2 {
+      max-width: 870px;
+      margin-bottom: 22px;
+      font-size: clamp(38px, 5.2vw, 68px);
+      line-height: .98;
+      letter-spacing: -.052em;
+    }
+    h3 { font-size: 22px; line-height: 1.15; letter-spacing: -.025em; }
+    .lead {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: clamp(18px, 2vw, 24px);
+      line-height: 1.4;
+    }
+    .small { color: var(--muted); font-size: 14px; }
+
+    .nav {
+      position: sticky;
+      z-index: 20;
+      top: 0;
+      border-bottom: 1px solid rgba(43,45,49,.12);
+      background: rgba(247,246,243,.86);
+      backdrop-filter: blur(18px);
+    }
+    .nav-inner {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand { font-weight: 800; text-decoration: none; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 18px; }
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 650;
+      text-decoration: none;
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    .hero {
+      position: relative;
+      min-height: calc(100vh - 70px);
+      overflow: hidden;
+      padding: 86px 0 60px;
+    }
+    .hero-copy { position: relative; z-index: 2; }
+    .hero h1 span {
+      position: relative;
+      display: inline-block;
+    }
+    .hero h1 span::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      left: -2%;
+      right: -2%;
+      bottom: .04em;
+      height: .22em;
+      border-radius: 999px;
+      background: var(--pink);
+      transform: rotate(-1.5deg);
+    }
+    .hero-actions, .resume-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+    .button {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0 18px;
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+      background: var(--ink);
+      color: white;
+      font-weight: 750;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+    .button:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(43,45,49,.14); }
+    .button.secondary { background: transparent; color: var(--ink); }
+    .button.pink { border-color: transparent; background: var(--pink); color: var(--ink); }
+    .button.green { border-color: transparent; background: var(--green); color: var(--ink); }
+    .button.blue { border-color: transparent; background: var(--blue); color: var(--ink); }
+    .hero-portrait {
+      position: absolute;
+      right: max(-40px, calc((100vw - 1180px)/2 - 40px));
+      bottom: -46px;
+      width: min(38vw, 455px);
+      filter: grayscale(.08);
+      opacity: .96;
+      pointer-events: none;
+    }
+    .hero-tags {
+      display: flex;
+      max-width: 720px;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 34px;
+    }
+    .tag {
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.7);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .doodle {
+      position: absolute;
+      z-index: 0;
+      font-family: Georgia, serif;
+      font-size: clamp(44px, 7vw, 90px);
+      font-style: italic;
+      opacity: .8;
+      transform: rotate(-10deg);
+      user-select: none;
+    }
+    .doodle.one { top: 78px; right: 12%; color: #91bda3; }
+    .doodle.two { right: 3%; bottom: 80px; color: #ef9eb8; transform: rotate(15deg); }
+
+    section { padding: 104px 0; border-top: 1px solid var(--line); }
+    .section-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 46px;
+    }
+    .section-count {
+      flex: none;
+      display: grid;
+      width: 58px;
+      height: 58px;
+      place-items: center;
+      border: 1px solid var(--ink);
+      border-radius: 50%;
+      font-weight: 800;
+    }
+
+    .positioning-grid, .case-grid, .approach-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .position-card, .case, .approach-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.7);
+      box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
+    }
+    .position-card { min-height: 290px; padding: 28px; }
+    .position-card:nth-child(1) { background: var(--pink); }
+    .position-card:nth-child(2) { background: var(--green); }
+    .position-card:nth-child(3) { background: var(--blue); }
+    .position-card .number {
+      margin-bottom: 70px;
+      font-size: 13px;
+      font-weight: 850;
+    }
+    .position-card p { margin: 0; font-size: 16px; }
+
+    .case-grid { grid-template-columns: repeat(2, 1fr); }
+    .case { padding: 30px; }
+    .case.wide { grid-column: 1 / -1; }
+    .case-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+    .case-mark {
+      flex: none;
+      width: 16px;
+      height: 16px;
+      margin-top: 4px;
+      border-radius: 50%;
+      background: var(--pink);
+      box-shadow: 17px 0 0 var(--green), 34px 0 0 var(--blue);
+    }
+    .case-meta {
+      margin-bottom: 12px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .case-description { color: var(--muted); }
+    .impact {
+      margin-top: 24px;
+      padding: 18px;
+      border-radius: 16px;
+      background: var(--paper);
+    }
+    .impact strong { display: block; margin-bottom: 5px; }
+    .metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 22px;
+    }
+    .metric {
+      padding: 8px 11px;
+      border-radius: 10px;
+      background: var(--blue);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .approach-card { padding: 26px; }
+    .approach-card .step {
+      display: grid;
+      width: 40px;
+      height: 40px;
+      margin-bottom: 46px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--ink);
+      color: white;
+      font-weight: 800;
+    }
+
+    .postcard-section { overflow: hidden; }
+    .postcard-story {
+      margin-bottom: 24px;
+      padding: 32px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: var(--ink);
+      color: white;
+    }
+    .postcard-story > p {
+      max-width: 900px;
+      margin-bottom: 28px;
+      color: #d5d6d9;
+      font-size: 20px;
+    }
+    .postcard-story-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      overflow: hidden;
+      border-radius: 18px;
+      background: rgba(255,255,255,.18);
+    }
+    .postcard-story-item {
+      min-height: 190px;
+      padding: 22px;
+      background: #383a3f;
+    }
+    .postcard-story-item:nth-child(1) { box-shadow: inset 0 5px 0 var(--pink); }
+    .postcard-story-item:nth-child(2) { box-shadow: inset 0 5px 0 var(--green); }
+    .postcard-story-item:nth-child(3) { box-shadow: inset 0 5px 0 var(--blue); }
+    .postcard-story-item .eyebrow { color: #bfc1c6; }
+    .postcard-story-item p { margin-bottom: 0; color: #e5e6e8; }
+    .postcard-app {
+      display: grid;
+      grid-template-columns: minmax(300px, .85fr) minmax(360px, 1.15fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+    .postcard-controls, .postcard-stage {
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: white;
+      box-shadow: var(--shadow);
+    }
+    .postcard-controls { padding: 28px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .field { display: grid; gap: 7px; }
+    .field.full { grid-column: 1 / -1; }
+    label { font-size: 12px; font-weight: 800; }
+    input, textarea, select {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      outline: none;
+      background: var(--paper);
+      color: var(--ink);
+    }
+    input, select { height: 46px; padding: 0 13px; }
+    textarea { min-height: 108px; padding: 12px 13px; resize: vertical; }
+    input:focus, textarea:focus, select:focus { border-color: var(--ink); }
+    .app-actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 20px; }
+    .app-actions .button { min-height: 43px; padding: 0 14px; font-size: 13px; }
+    .postcard-stage {
+      display: grid;
+      min-height: 560px;
+      place-items: center;
+      padding: 30px;
+      background:
+        radial-gradient(circle at 12% 20%, rgba(244,202,216,.7), transparent 27%),
+        radial-gradient(circle at 88% 80%, rgba(207,229,244,.8), transparent 25%),
+        white;
+    }
+    .postcard {
+      position: relative;
+      display: flex;
+      width: min(100%, 650px);
+      aspect-ratio: 1.414 / 1;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      padding: clamp(28px, 5vw, 54px);
+      border: 1px solid rgba(43,45,49,.18);
+      border-radius: 6px;
+      background: var(--card-bg, var(--pink));
+      box-shadow: 0 26px 80px rgba(43,45,49,.18);
+    }
+    .postcard::before {
+      content: "✦";
+      position: absolute;
+      top: 22px;
+      right: 28px;
+      font-size: 42px;
+      transform: rotate(12deg);
+    }
+    .postcard::after {
+      content: "";
+      position: absolute;
+      right: -45px;
+      bottom: -68px;
+      width: 180px;
+      height: 180px;
+      border: 2px solid currentColor;
+      border-radius: 50%;
+      opacity: .5;
+    }
+    .card-kicker {
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .card-title {
+      position: relative;
+      z-index: 1;
+      max-width: 90%;
+      margin: auto 0;
+      font-size: clamp(34px, 5vw, 66px);
+      line-height: .98;
+      letter-spacing: -.05em;
+    }
+    .card-footer {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      font-size: 14px;
+    }
+    .card-message { max-width: 70%; }
+    .card-signature { font-weight: 850; white-space: nowrap; }
+
+    .resume-box {
+      padding: 44px;
+      border-radius: 30px;
+      background: var(--ink);
+      color: white;
+    }
+    .resume-box p { max-width: 680px; color: #c9cbd0; }
+    .resume-box .button { border-color: white; background: transparent; }
+    .resume-box .button:hover { background: white; color: var(--ink); }
+
+    .footer {
+      padding: 70px 0 40px;
+      border-top: 1px solid var(--line);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 40px;
+      align-items: end;
+    }
+    .contact-big {
+      display: block;
+      width: fit-content;
+      margin: 7px 0;
+      font-size: clamp(25px, 4vw, 50px);
+      font-weight: 760;
+      line-height: 1;
+      letter-spacing: -.045em;
+      text-decoration: none;
+    }
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+    .footer-note { color: var(--muted); }
+
+    .print-sheet { display: none; }
+
+    @media (max-width: 900px) {
+      .hero { min-height: auto; padding-bottom: 420px; }
+      .hero-portrait { right: 50%; width: 370px; transform: translateX(50%); }
+      .positioning-grid, .approach-grid { grid-template-columns: 1fr; }
+      .case-grid { grid-template-columns: 1fr; }
+      .case.wide { grid-column: auto; }
+      .postcard-story-grid { grid-template-columns: 1fr; }
+      .postcard-app { grid-template-columns: 1fr; }
+      .postcard-stage { min-height: 440px; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .shell { width: min(100% - 24px, 1180px); }
+      .nav-links a:nth-child(-n+3) { display: none; }
+      .hero { padding-top: 64px; }
+      section { padding: 76px 0; }
+      .section-head { display: block; }
+      .section-count { margin-bottom: 24px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .field.full { grid-column: auto; }
+      .postcard-controls, .postcard-stage { padding: 18px; }
+      .postcard-stage { min-height: 340px; }
+      .card-message { max-width: 100%; }
+      .resume-box { padding: 28px; }
+    }
+
+    @page { size: A4 portrait; margin: 12mm; }
+    @media print {
+      body > *:not(.print-sheet) { display: none !important; }
+      .print-sheet {
+        display: grid !important;
+        grid-template-columns: 148mm;
+        gap: 10mm;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 273mm;
+        background: white;
+        color: var(--ink);
+      }
+      .print-card {
+        position: relative;
+        display: flex;
+        width: 148mm;
+        height: 105mm;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: hidden;
+        padding: 12mm;
+        border: .3mm dashed #777;
+        background: var(--print-bg, var(--pink));
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+      .print-card.back { background: white; }
+      .print-card h2 { margin: auto 0; font-size: 17mm; }
+      .print-card .print-note { max-width: 95mm; font-size: 5mm; }
+      .print-card .address-lines {
+        width: 70mm;
+        margin-left: auto;
+        border-top: .3mm solid #888;
+        border-bottom: .3mm solid #888;
+        padding: 7mm 0;
+        color: #888;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Основная навигация">
+    <div class="shell nav-inner">
+      <a class="brand" href="#top">AK / PORTFOLIO</a>
+      <div class="nav-links">
+        <a href="#about">Обо мне</a>
+        <a href="#cases">Кейсы</a>
+        <a href="#postcards">Открытки</a>
+        <a href="#resume">Резюме</a>
+        <a href="#contact">Контакты</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <header class="hero">
+      <div class="shell hero-copy">
+        <p class="eyebrow">Маркетинг · спецпроекты · бренд-коммуникации</p>
+        <h1>Анастасия<br>Кузнецова.<br><span>Делаю вау</span> —<br>и довожу до запуска.</h1>
+        <p class="lead">Соединяю идею, людей и производство. Запускаю коммуникационные проекты, координирую подрядчиков и превращаю «было бы классно» в работающий результат.</p>
+        <div class="hero-actions">
+          <a class="button" href="#cases">Смотреть кейсы <span>↓</span></a>
+          <a class="button secondary" href="mailto:aa.smth@yandex.ru">Написать мне</a>
+        </div>
+        <div class="hero-tags" aria-label="Профессиональные направления">
+          <span class="tag">B2C</span>
+          <span class="tag">спецпроекты</span>
+          <span class="tag">creative production</span>
+          <span class="tag">brand communications</span>
+          <span class="tag">events</span>
+          <span class="tag">внутренние сообщества</span>
+        </div>
+      </div>
+      <span class="doodle one" aria-hidden="true">wow!</span>
+      <span class="doodle two" aria-hidden="true">↝</span>
+      <img class="hero-portrait" src="assets/anastasia.png" alt="Анастасия Кузнецова в полосатом костюме">
+    </header>
+
+    <section id="about">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Позиционирование</p>
+            <h2>Маркетолог общей практики с продюсерским мышлением.</h2>
+            <p class="lead">Около трёх лет опыта. Моя сильная сторона — не отдельный канал, а сборка проекта целиком: понять аудиторию, придумать механику, договориться, организовать и показать бизнесу результат.</p>
+          </div>
+          <div class="section-count">01</div>
+        </div>
+        <div class="positioning-grid">
+          <article class="position-card">
+            <div class="number">01 / СПЕЦПРОЕКТЫ</div>
+            <h3>Проект от идеи до запуска</h3>
+            <p>Концепция, смета, подрядчики, материалы, логистика, контроль сроков и передача команде.</p>
+          </article>
+          <article class="position-card">
+            <div class="number">02 / КРЕАТИВ</div>
+            <h3>Вау с практическим смыслом</h3>
+            <p>Идея должна не только выглядеть свежо, но и собирать внимание, участие или лояльность.</p>
+          </article>
+          <article class="position-card">
+            <div class="number">03 / КОММУНИКАЦИИ</div>
+            <h3>Люди в центре</h3>
+            <p>Люблю переговоры, партнёрства, сообщества, события и живую реакцию аудитории.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="cases">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Реализованные кейсы</p>
+            <h2>Не просто «сделала». Зачем это было бизнесу.</h2>
+            <p class="lead">Часть коммерческих материалов защищена NDA, поэтому здесь — моя роль, механика и подтверждённый эффект без раскрытия конфиденциальных деталей.</p>
+          </div>
+          <div class="section-count">02</div>
+        </div>
+
+        <div class="case-grid">
+          <article class="case wide">
+            <div class="case-top">
+              <div>
+                <p class="case-meta">ADVANTA · внутренние коммуникации</p>
+                <h3>Корпоративный Telegram-канал для половины компании</h3>
+              </div>
+              <div class="case-mark" aria-hidden="true"></div>
+            </div>
+            <p class="case-description">Совместно с SMM-менеджером запустила внутренний канал. Он набрал около 200 подписчиков — примерно половину компании — и сохраняет стабильную активность.</p>
+            <div class="impact"><strong>Польза для бизнеса</strong>Единый быстрый канал уменьшает потери информации между подразделениями, повышает вовлечённость и помогает сотрудникам чувствовать связь с компанией. Скрытый финансовый эффект — меньше времени на повторные коммуникации и ниже риск оттока из-за информационной изоляции.</div>
+            <div class="metrics"><span class="metric">≈200 подписчиков</span><span class="metric">≈50% компании</span><span class="metric">стабильная активность</span></div>
+          </article>
+
+          <article class="case">
+            <p class="case-meta">ADVANTA · employee experience</p>
+            <h3>Анонимный канал обратной связи</h3>
+            <p class="case-description">Запустила канал для аудитории около 100 сотрудников: координировала реализацию с IT, коммуникацию, ответы и ежемесячные отчёты руководству.</p>
+            <div class="impact"><strong>Скрытая прибыль</strong>Проблемы становятся видимыми раньше, чем превращаются в увольнение или конфликт. Это поддерживает доверие и позволяет экономить на найме, адаптации и потере производительности при замене сотрудников.</div>
+          </article>
+
+          <article class="case">
+            <p class="case-meta">ADVANTA · community & ESG</p>
+            <h3>«Добрые крышечки» и экоинициативы</h3>
+            <p class="case-description">Лендинг на Tilda, внутренние материалы, физический контейнер, сопровождение и регулярный вывоз. Дополнительно инициировала проработку мерча из производственных остатков с Recycle Object.</p>
+            <div class="impact"><strong>Польза для бизнеса</strong>Укрепление культуры и employer brand через понятное совместное действие. Такие механики дают сотрудникам эмоциональную причину ассоциировать себя с компанией и поддерживают удержание.</div>
+          </article>
+
+          <article class="case">
+            <p class="case-meta">ADVANTA · внутреннее сообщество</p>
+            <h3>Геймифицированный буккроссинг</h3>
+            <p class="case-description">Создала концепцию, Telegram-бота, правила, полиграфию и офлайн-пространство. Проект продолжил жить в физическом формате и получил положительную обратную связь.</p>
+            <div class="impact"><strong>Скрытая прибыль</strong>Неформальные связи между сотрудниками улучшают горизонтальную коммуникацию. Это снижает трение между командами, поддерживает лояльность и делает офисную культуру менее формальной.</div>
+          </article>
+
+          <article class="case">
+            <p class="case-meta">ADVANTA · визуальная система</p>
+            <h3>Временный брендбук и шаблоны презентаций</h3>
+            <p class="case-description">Собрала визуальные правила, презентационную систему и шаблоны, которыми подразделения могли пользоваться самостоятельно.</p>
+            <div class="impact"><strong>Польза для бизнеса</strong>Единый визуальный язык повышает доверие к бренду и сокращает время сотрудников на сборку материалов. Меньше правок и повторной работы — ниже внутренняя стоимость каждой презентации.</div>
+          </article>
+
+          <article class="case wide">
+            <div class="case-top">
+              <div>
+                <p class="case-meta">LEVIN / GEFEST · digital</p>
+                <h3>Сайт: больше аудитории, меньше мусорного трафика</h3>
+              </div>
+              <div class="case-mark" aria-hidden="true"></div>
+            </div>
+            <p class="case-description">Курировала сайты двух брендов, визуальные материалы, контент и рекламные активности. Для LEVIN посещаемость выросла на 33,4% за шесть месяцев. После устранения бот-трафика показатель отказов снизился с 80% до 13%.</p>
+            <div class="impact"><strong>Польза для бизнеса</strong>Не просто рост цифры посещений, а повышение качества данных и реальной аудитории. Чистая аналитика помогает точнее распределять бюджет, а заинтересованный трафик создаёт больше возможностей для заявок и продаж.</div>
+            <div class="metrics"><span class="metric">+33,4% посещаемость</span><span class="metric">80% → 13% отказы</span><span class="metric">6 месяцев</span></div>
+          </article>
+
+          <article class="case">
+            <p class="case-meta">LEVIN / GEFEST · event production</p>
+            <h3>Отраслевая выставка: подготовка до передачи команде</h3>
+            <p class="case-description">Проработала состав и размещение оборудования, координировала застройщика и других подрядчиков, полиграфию, логистику, билеты и поездку сотрудников.</p>
+            <div class="impact"><strong>Польза для бизнеса</strong>Единая координация снижает риск срыва, простоев и срочных переплат. Команда получила подготовленный проект, в котором ключевые производственные и организационные зависимости уже были собраны.</div>
+          </article>
+
+          <article class="case">
+            <p class="case-meta">LEVIN / GEFEST · operations</p>
+            <h3>Подрядчики, условия и бюджеты двух брендов</h3>
+            <p class="case-description">Запрашивала и сравнивала предложения, согласовывала сметы, сроки и условия с типографиями, производствами, дизайнерами и другими партнёрами.</p>
+            <div class="impact"><strong>Польза для бизнеса</strong>Конкурентное сравнение и переговоры снижают стоимость ошибок и делают денежный поток предсказуемее. Отдельный фокус — более безопасные условия оплаты и логистики.</div>
+          </article>
+
+          <article class="case">
+            <p class="case-meta">РУССКИЙ ПРОЕКТ · partner development</p>
+            <h3>Переговоры на английском → новый поставщик</h3>
+            <p class="case-description">На выставке общалась с потенциальными зарубежными поставщиками на английском. Компания привлекла нового поставщика и расширила ассортимент.</p>
+            <div class="impact"><strong>Прямая бизнес-польза</strong>Расширение пула поставщиков снижает зависимость от одного канала, усиливает предложение для клиентов и создаёт потенциал дополнительной выручки.</div>
+          </article>
+
+          <article class="case">
+            <p class="case-meta">РУССКИЙ ПРОЕКТ · dealer marketing</p>
+            <h3>Две выставки ПИР и дилерские материалы</h3>
+            <p class="case-description">Помогала подбирать оборудование для экспозиции, готовила полиграфию и презентации дилерского семинара, а также контент и инфографику.</p>
+            <div class="impact"><strong>Польза для бизнеса</strong>Понятные материалы помогают дилерам быстрее разобраться в продукте и увереннее его представлять. Это косвенно влияет на скорость продаж и качество партнёрской коммуникации.</div>
+          </article>
+
+          <article class="case">
+            <p class="case-meta">ADVANTA · product concept</p>
+            <h3>Продуктовая идея с джус-боллами</h3>
+            <p class="case-description">Предложила нестандартную концепцию и вместе с технологами довела её до выставочного образца.</p>
+            <div class="impact"><strong>Польза для бизнеса</strong>Выставочный прототип делает идею осязаемой, помогает собирать реакцию аудитории и проверять интерес до более дорогого масштабирования.</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Как я работаю</p>
+            <h2>Креатив без хаоса. Процесс без бюрократии ради бюрократии.</h2>
+          </div>
+          <div class="section-count">03</div>
+        </div>
+        <div class="approach-grid">
+          <article class="approach-card"><div class="step">1</div><h3>Нахожу человеческий смысл</h3><p>Что аудитория должна почувствовать, сделать или рассказать другим?</p></article>
+          <article class="approach-card"><div class="step">2</div><h3>Собираю реализацию</h3><p>Референсы, подрядчики, роли, сроки, смета, материалы и точки контроля.</p></article>
+          <article class="approach-card"><div class="step">3</div><h3>Перевожу в бизнес-эффект</h3><p>Охваты и реакции — только часть картины. Смотрю на экономию, качество опыта, лояльность и потенциал роста.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="postcards" class="postcard-section">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Интерактивный концептуальный кейс</p>
+            <h2>Конструктор открыток.</h2>
+            <p class="lead">Пример механики одного из моих последних кейсов: небольшое решение для реальной коммуникационной проблемы внутри компании.</p>
+          </div>
+          <div class="section-count">04</div>
+        </div>
+        <article class="postcard-story">
+          <p><strong>Иногда, чтобы предотвратить катастрофу, не нужен сложный проект и долгое исследование.</strong> Нужно вовремя увидеть проблему, понять, чего людям не хватает, и предложить понятное действие.</p>
+          <div class="postcard-story-grid">
+            <div class="postcard-story-item">
+              <p class="eyebrow">Ситуация</p>
+              <h3>Новый регламент поняли по-разному</h3>
+              <p>После сообщения руководства о новом порядке празднования дней рождения у сотрудников возникло недопонимание. Обсуждение переросло в конфликт и создало лишнее напряжение.</p>
+            </div>
+            <div class="postcard-story-item">
+              <p class="eyebrow">Моё решение</p>
+              <h3>Разъяснить и вернуть людям инициативу</h3>
+              <p>Подготовила понятную разъясняющую рассылку и приложение для создания открыток, чтобы сотрудникам было проще продолжать поздравлять друг друга в рамках нового порядка.</p>
+            </div>
+            <div class="postcard-story-item">
+              <p class="eyebrow">Польза для бизнеса</p>
+              <h3>Снять напряжение простым действием</h3>
+              <p>Решение помогает сохранить привычный социальный ритуал, снизить сопротивление изменениям и поддержать лояльность без дорогой программы вовлечённости. Это профилактика конфликтов, потери рабочего времени и эмоционального отдаления сотрудников.</p>
+            </div>
+          </div>
+        </article>
+        <p class="lead" style="margin-bottom:28px;">Ниже — немного изменённая версия механики. Её можно попробовать прямо здесь: создать открытку, сохранить как изображение, подготовить письмо или получить автоматическую вёрстку для печати.</p>
+        <div class="postcard-app">
+          <form class="postcard-controls" id="postcardForm" onsubmit="return false;">
+            <h3>Соберите открытку</h3>
+            <p class="small">Все данные остаются только в вашем браузере.</p>
+            <div class="form-grid">
+              <div class="field">
+                <label for="recipient">Кому</label>
+                <input id="recipient" value="Ане" maxlength="28">
+              </div>
+              <div class="field">
+                <label for="occasion">Повод</label>
+                <select id="occasion">
+                  <option>Просто так</option>
+                  <option>День рождения</option>
+                  <option>Спасибо</option>
+                  <option>Поздравление</option>
+                  <option>Ты справишься</option>
+                </select>
+              </div>
+              <div class="field full">
+                <label for="cardTitleInput">Большая фраза</label>
+                <input id="cardTitleInput" value="Ты делаешь мир интереснее" maxlength="64">
+              </div>
+              <div class="field full">
+                <label for="cardMessageInput">Сообщение</label>
+                <textarea id="cardMessageInput" maxlength="170">Спасибо, что умеешь превращать обычный день в историю, которую хочется запомнить.</textarea>
+              </div>
+              <div class="field">
+                <label for="signature">Подпись</label>
+                <input id="signature" value="Настя" maxlength="24">
+              </div>
+              <div class="field">
+                <label for="palette">Цвет</label>
+                <select id="palette">
+                  <option value="pink">Розовый</option>
+                  <option value="green">Зелёный</option>
+                  <option value="blue">Голубой</option>
+                  <option value="mono">Монохром</option>
+                </select>
+              </div>
+              <div class="field full">
+                <label for="email">Email получателя</label>
+                <input id="email" type="email" placeholder="name@example.com">
+              </div>
+            </div>
+            <div class="app-actions">
+              <button class="button pink" type="button" id="saveCard">Сохранить PNG</button>
+              <button class="button blue" type="button" id="emailCard">Открыть письмо</button>
+              <button class="button green" type="button" id="shareCard">Поделиться</button>
+              <button class="button secondary" type="button" id="printCard">Макет для печати</button>
+            </div>
+            <p class="small" id="appStatus" aria-live="polite" style="margin:16px 0 0;"></p>
+          </form>
+
+          <div class="postcard-stage">
+            <article class="postcard" id="postcardPreview" aria-label="Предпросмотр открытки">
+              <div class="card-kicker" id="cardKicker">Просто так · для Ани</div>
+              <h3 class="card-title" id="cardTitle">Ты делаешь мир интереснее</h3>
+              <div class="card-footer">
+                <div class="card-message" id="cardMessage">Спасибо, что умеешь превращать обычный день в историю, которую хочется запомнить.</div>
+                <div class="card-signature" id="cardSignature">— Настя</div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="resume">
+      <div class="shell">
+        <div class="resume-box">
+          <p class="eyebrow">Резюме на HeadHunter</p>
+          <h2>Три фокуса. Одна профессиональная база.</h2>
+          <p>Каждая версия расставляет разные акценты, но не придумывает отдельную карьеру: проектная координация, креативное производство и коммуникации.</p>
+          <div class="resume-actions">
+            <a class="button" href="https://hh.ru/resume/bd114b8eff10da8aab0039ed1f5146796d6b54" target="_blank" rel="noopener">Спецпроекты ↗</a>
+            <a class="button" href="https://hh.ru/resume/32a5e31eff10da9c3b0039ed1f697248696139" target="_blank" rel="noopener">Креативный продюсер ↗</a>
+            <a class="button" href="https://hh.ru/resume/0894d413ff10daacc80039ed1f706a37353849" target="_blank" rel="noopener">PR и бренд-коммуникации ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contact">
+    <div class="shell footer-grid">
+      <div>
+        <p class="eyebrow">Контакты</p>
+        <h2>Давайте сделаем то самое «вау».</h2>
+        <a class="contact-big" href="mailto:aa.smth@yandex.ru">aa.smth@yandex.ru</a>
+        <a class="contact-big" href="https://t.me/aa.smth" target="_blank" rel="noopener">@aa.smth</a>
+        <div class="contact-actions">
+          <a class="button pink" href="https://t.me/aa.smth" target="_blank" rel="noopener">Написать в Telegram ↗</a>
+          <a class="button blue" href="mailto:aa.smth@yandex.ru">Написать на почту ↗</a>
+        </div>
+      </div>
+      <div class="footer-note">
+        <p>Москва · гибридный формат</p>
+        <p>РАНХиГС, маркетинг · 2023<br>English B1 Business (LCCI), разговорный уровень выше сертификата</p>
+        <p>Интерес: B2C-продукты, bigtech, fintech, lifestyle, entertainment, media и FMCG.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="print-sheet" aria-hidden="true">
+    <article class="print-card" id="printFront">
+      <div class="card-kicker" id="printKicker">Просто так · для Ани</div>
+      <h2 id="printTitle">Ты делаешь мир интереснее</h2>
+      <strong id="printSignature">— Настя</strong>
+    </article>
+    <article class="print-card back">
+      <div class="print-note" id="printMessage">Спасибо, что умеешь превращать обычный день в историю, которую хочется запомнить.</div>
+      <div class="address-lines">Кому<br><br>Куда</div>
+      <small>Согните или обрежьте по пунктирной линии.</small>
+    </article>
+  </div>
+
+  <script>
+    (() => {
+      const palettes = {
+        pink: { bg: "#f4cad8", canvas: "#f4cad8" },
+        green: { bg: "#d8ebcf", canvas: "#d8ebcf" },
+        blue: { bg: "#cfe5f4", canvas: "#cfe5f4" },
+        mono: { bg: "#ecebe7", canvas: "#ecebe7" }
+      };
+      const fields = {
+        recipient: document.querySelector("#recipient"),
+        occasion: document.querySelector("#occasion"),
+        title: document.querySelector("#cardTitleInput"),
+        message: document.querySelector("#cardMessageInput"),
+        signature: document.querySelector("#signature"),
+        palette: document.querySelector("#palette"),
+        email: document.querySelector("#email")
+      };
+      const preview = document.querySelector("#postcardPreview");
+      const status = document.querySelector("#appStatus");
+
+      function values() {
+        return {
+          recipient: fields.recipient.value.trim() || "друга",
+          occasion: fields.occasion.value,
+          title: fields.title.value.trim() || "Для тебя",
+          message: fields.message.value.trim() || "Пусть сегодня случится что-нибудь хорошее.",
+          signature: fields.signature.value.trim() || "Аноним",
+          palette: fields.palette.value
+        };
+      }
+
+      function update() {
+        const v = values();
+        const kicker = `${v.occasion} · для ${v.recipient}`;
+        preview.style.setProperty("--card-bg", palettes[v.palette].bg);
+        document.querySelector("#cardKicker").textContent = kicker;
+        document.querySelector("#cardTitle").textContent = v.title;
+        document.querySelector("#cardMessage").textContent = v.message;
+        document.querySelector("#cardSignature").textContent = `— ${v.signature}`;
+        document.querySelector("#printFront").style.setProperty("--print-bg", palettes[v.palette].bg);
+        document.querySelector("#printKicker").textContent = kicker;
+        document.querySelector("#printTitle").textContent = v.title;
+        document.querySelector("#printMessage").textContent = v.message;
+        document.querySelector("#printSignature").textContent = `— ${v.signature}`;
+      }
+
+      function wrapText(ctx, text, x, y, maxWidth, lineHeight, maxLines) {
+        const words = text.split(/\s+/);
+        const lines = [];
+        let line = "";
+        words.forEach(word => {
+          const test = line ? `${line} ${word}` : word;
+          if (ctx.measureText(test).width > maxWidth && line) {
+            lines.push(line);
+            line = word;
+          } else {
+            line = test;
+          }
+        });
+        if (line) lines.push(line);
+        lines.slice(0, maxLines).forEach((item, index) => {
+          const suffix = index === maxLines - 1 && lines.length > maxLines ? "…" : "";
+          ctx.fillText(item + suffix, x, y + index * lineHeight);
+        });
+      }
+
+      function makePng() {
+        const v = values();
+        const canvas = document.createElement("canvas");
+        canvas.width = 1600;
+        canvas.height = 1131;
+        const ctx = canvas.getContext("2d");
+        ctx.fillStyle = palettes[v.palette].canvas;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.strokeStyle = "#2b2d31";
+        ctx.lineWidth = 4;
+        ctx.strokeRect(28, 28, canvas.width - 56, canvas.height - 56);
+
+        ctx.fillStyle = "#2b2d31";
+        ctx.font = "700 28px Arial";
+        ctx.fillText(`${v.occasion.toUpperCase()} · ДЛЯ ${v.recipient.toUpperCase()}`, 100, 115);
+        ctx.font = "700 98px Arial";
+        wrapText(ctx, v.title, 100, 370, 1250, 108, 4);
+        ctx.font = "38px Arial";
+        wrapText(ctx, v.message, 100, 890, 1050, 52, 3);
+        ctx.font = "700 38px Arial";
+        ctx.textAlign = "right";
+        ctx.fillText(`— ${v.signature}`, 1500, 1020);
+        ctx.textAlign = "left";
+
+        ctx.font = "80px Georgia";
+        ctx.fillText("✦", 1410, 135);
+        ctx.beginPath();
+        ctx.arc(1500, 1030, 180, 0, Math.PI * 2);
+        ctx.stroke();
+        return canvas;
+      }
+
+      function downloadPng() {
+        const canvas = makePng();
+        const link = document.createElement("a");
+        link.download = "otkrytka.png";
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+        status.textContent = "PNG сохранён. Его можно отправить в мессенджере или приложить к письму.";
+      }
+
+      document.querySelector("#postcardForm").addEventListener("input", update);
+      document.querySelector("#saveCard").addEventListener("click", downloadPng);
+      document.querySelector("#printCard").addEventListener("click", () => {
+        update();
+        status.textContent = "Открываю отдельную A4-вёрстку: лицевая и оборотная стороны открытки.";
+        window.print();
+      });
+      document.querySelector("#emailCard").addEventListener("click", () => {
+        const v = values();
+        downloadPng();
+        const subject = encodeURIComponent(`Открытка для ${v.recipient}: ${v.title}`);
+        const body = encodeURIComponent(`${v.message}\n\n— ${v.signature}\n\nPNG-открытка уже сохранена — приложите её к этому письму.`);
+        const email = encodeURIComponent(fields.email.value.trim());
+        window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+      });
+      document.querySelector("#shareCard").addEventListener("click", async () => {
+        const v = values();
+        const canvas = makePng();
+        const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/png"));
+        const file = new File([blob], "otkrytka.png", { type: "image/png" });
+        if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+          await navigator.share({ title: v.title, text: v.message, files: [file] });
+          status.textContent = "Открытка передана в системное меню отправки.";
+        } else {
+          downloadPng();
+          status.textContent = "На этом устройстве прямой обмен недоступен — PNG сохранён.";
+        }
+      });
+      update();
+    })();
+  </script>
+</body>
+</html>
